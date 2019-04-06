@@ -1,36 +1,80 @@
-/* Put your css in here */
-
-a {
-  color: blue;
-  cursor: pointer;
-  text-decoration: underline;
+/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #F8F9FA !important;
 }
 
-ul li  ul {
-  display: none;
+.App{
+  text-align: -webkit-center;
+}
+.App-header {
+  background-color: transparent;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: #333333;
 }
 
-.open {
-   display: block;
+
+p{
+  color: #212529!important; 
 }
 
-.btn-login {
-  margin-top: 23px;
+.form{
+  margin-top: 30px;
+  padding-left: 12px;
+  font-size: 20px;
+  width: 60vh;
+  height: 6vh;
+  -webkit-border-radius: 5px;
+  border-radius: 10px; 
+  border: none;
+  background-color: white !important;
+  box-shadow: 1px 2px;
+  
+
 }
-#map {
-  height: 100%;
-  width: 100%;
+.form::placeholder{
+  color: #9F9F9F;
+}
+
+.form:focus {
+  outline: none;
+  text-decoration: none;
+  background-color: white !important;
+} 
+
+.submit{
+    padding-top: 10px;
+    margin-left: 5px;
+    width: 5vh;
+    height: 5vh;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px; 
+}
+
+.submit:focus{
+  outline: none;
+}
+
+
+blockquote{
+  width: 500px;
+  background: white;
+  align-items: center;
   position: relative;
 }
 
-#map_route {
-  height: 500px;
-  width: 100%;
-  position: relative;
+.datadisplay{
+  text-align: -webkit-center;
+  margin-top: 20px;
+  border-radius: 50px;
 }
 
-#panel { background-color: #DDD; position:relative; width:300px; }
-
-.mapCharger #map {
-  min-height: 40vh;
+.text-muted, .credit{
+  bottom: 0px;
+  position: absolute;
+  right: 15px
 }

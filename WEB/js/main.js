@@ -15,12 +15,16 @@ app.controller('MainCtrl', function($scope, $location, Service) {
       $location.path(path);
   }
 
-  $scope.userInfo = {};
+  $scope.dadesrebudes = false;
 
   $scope.getData = function(query){
     Service.getUserInfo(query).then(function(success){
-        console.log(success.data);
         $scope.userInfo = success.data;
+        $scope.userInfo.averageScore =  $scope.userInfo.averageScore * 100;
+        $scope.userInfo.averageScore = $scope.userInfo.averageScore.toFixed(2);
+        $scope.dadesrebudes = true;
+        console.log(success.data);
     })
   }
 });
+
