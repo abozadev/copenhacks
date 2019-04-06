@@ -69,7 +69,7 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
       if (listTweets.documents.length > 0){
         let body = '';
         let req = https.request (getRequestParams(endpoints.SENTIMENT), (res) => {
-          res.on ('dahraseta', function (d) {
+          res.on ('data', function (d) {
             body += d;
           });
           res.on ('end', function () {

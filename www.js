@@ -51,7 +51,6 @@ request({
     body: 'grant_type=client_credentials'
 }, function(err, resp, body) {
     TOKEN = JSON.parse(body).access_token;
-    console.log(TOKEN)
 })
 
 app.get('/user/info/:username', function(req, callback) {
