@@ -46,34 +46,38 @@ let parseSentimentData = function(body, listTweets, callback){
 }
 
 let getSentimentsFromTwitterData = function(twitterData, callback){
-  if (twitterData.statuses !== null && twitterData.statuses !== undefined){
-    twitterData = twitterData.statuses;
+  if (twitterData != null && twitterData != undefined && twitterData.length > 0){
+    if (twitterData.statuses !== null && twitterData.statuses !== undefined){
+      twitterData = twitterData.statuses;
+    }
+    
+    let listTweets = {'documents' : []};
+    var index = 0;
+    
+    twitterData.forEach(function(tweet){
+      if (tweet.retweeted_status == undefined){
+        listTweets.documents.push({
+          'id' : index,
+          'text': tweet.text,
+          'language' : tweet.lang
+        });
+      }
+      index++;
+    });
+  
+    let body = '';
+    let req = https.request (getRequestParams(endpoints.SENTIMENT), (res) => {
+      res.on ('data', function (d) {
+        body += d;
+      });
+      res.on ('end', function () {
+        parseSentimentData(JSON.parse(body), listTweets, callback);
+      });
+    });
+    req.write(JSON.stringify(listTweets));
+    req.end();
   }
   
-  let listTweets = {'documents' : []};
-  var index = 0;
-  twitterData.forEach(function(tweet){
-    if (tweet.retweeted_status == undefined){
-      listTweets.documents.push({
-        'id' : index,
-        'text': tweet.text,
-        'language' : tweet.lang
-      });
-    }
-    index++;
-  });
-
-  let body = '';
-	let req = https.request (getRequestParams(endpoints.SENTIMENT), (res) => {
-    res.on ('data', function (d) {
-      body += d;
-    });
-    res.on ('end', function () {
-      parseSentimentData(JSON.parse(body), listTweets, callback);
-    });
-  });
-	req.write(JSON.stringify(listTweets));
-  req.end(); 
 }
 
 module.exports.getSentimentsFromTwitterData = getSentimentsFromTwitterData;
