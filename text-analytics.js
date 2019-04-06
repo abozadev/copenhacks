@@ -147,3 +147,4 @@ let getKeyPhrasesFromTwitterData = function(twitterData, callback){
 }
 
 module.exports.getSentimentsFromTwitterData = getSentimentsFromTwitterData;
+module.exports.getKeyPhrasesFromTwitterData = getKeyPhrasesFromTwitterData;
