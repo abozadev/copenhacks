@@ -1,0 +1,36 @@
+/* Put your css in here */
+
+a {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+ul li  ul {
+  display: none;
+}
+
+.open {
+   display: block;
+}
+
+.btn-login {
+  margin-top: 23px;
+}
+#map {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+#map_route {
+  height: 500px;
+  width: 100%;
+  position: relative;
+}
+
+#panel { background-color: #DDD; position:relative; width:300px; }
+
+.mapCharger #map {
+  min-height: 40vh;
+}

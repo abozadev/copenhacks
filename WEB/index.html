@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html ng-app="web">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Tracker</title>
+    <link rel="icon" href="img/logo.png">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="libs/ngTagsInput/ng-tags-input.min.css"/>
+
+    <!-- JQuery -->
+    <script src="libs/jquery/jquery-3.3.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="libs/bootstrap/3.3.7/bootstrap.min.css">
+    <script src="libs/bootstrap/3.3.7/bootstrap.min.js"></script>
+
+    <!-- AngularJS -->
+    <script src="libs/angular/1.6.6/angular.min.js"></script>
+    <script src="libs/angular/1.6.6/angular-route.min.js"></script>
+
+    <!-- Angular-Moment -->
+    <script src="libs/angular-moment/moment.js"></script>
+    <script src="libs/angular-moment/angular-moment-picker.js"></script>
+    <link rel="stylesheet" href="libs/angular-moment/angular-moment-picker.css">
+
+    <!-- Angular Chart -->
+    <script src="libs/chart/Chart.js"></script>
+    <script src="libs/chart/angular-chart.js"></script>
+
+    <!-- NGTagsInput -->
+    <script src="libs/ngTagsInput/ng-tags-input.min.js"></script>
+
+    <!-- App -->
+    <script src="js/app.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/factory.js"></script>
+
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASD3OrVfKqa-BOTFfWad6-bS0g7KUf_Lo&libraries=places"
+    async defer></script>-->
+</head>
+
+<body ng-controller="MainCtrl">
+<nav class="navbar navbar-default" style="margin-bottom: 0px !important">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">TWEETANALYZER!</a>
+        </div>
+        <ul class="nav navbar-nav" >
+            <li ng-class="getActive() == 'HOME' ? 'active' : ''">
+                <a href="#">Home</a>
+            </li>
+            <!--<li ng-class="getActive() == '1' ? 'active' : ''">
+                <a href="" ng-click="goTo('/1')">1</a>
+            </li>
+            <li ng-class="getActive() == '2' ? 'active' : ''">
+                <a href="" ng-click="goTo('/2')">2</a>
+            </li>-->
+        </ul>
+    </div>
+</nav>
+<div ng-view></div>
+<div id="footer">
+    <div class="container text-center">
+        <p class="text-muted credit">TweeterAnalyzer with ❤️ at Copenhacks!</p>
+    </div>
+</div>
+</body>
+
+</html>
