@@ -46,7 +46,7 @@ let parseSentimentData = function(body, listTweets, callback){
 }
 
 let getSentimentsFromTwitterData = function(twitterData, callback){
-  if (twitterData.statuses !== null){
+  if (twitterData.statuses !== null && twitterData.statuses !== undefined){
     twitterData = twitterData.statuses;
   }
   
