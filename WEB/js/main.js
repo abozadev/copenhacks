@@ -30,10 +30,8 @@ app.controller('MainCtrl', function($scope, $location, Service) {
     })
     Service.getUserProfile(query).then(function(success){
         $scope.userProfile = success.data;
-
-
         $scope.userProfile.profile_image_url = $scope.userProfile.profile_image_url.split('_normal')[0] + '.jpg';
-        console.log($scope.userProfile);
+        $scope.colors = ["#FF4A52", "#92FF91" ];
     })
   }
 });

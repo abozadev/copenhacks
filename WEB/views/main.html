@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-  <div class="App">
-    <form> 
-        <input class="form" maxlength="20" type="text"  ng-model="query.user" name="username" placeholder="@username" autocomplete="off"/>
-        <button ng-href='' ng-click=getData(query.user) type="submit" class="btn-primary">Go</button>
+  <div>
+    <form >
+        <div class="row">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="query.user" placeholder="Username">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary" ng-click="getData(query.user)" >Search</button>
+                    </span>
+                </div>
+            </div>
+        </div>
     </form>
 
-    <div ng-if="dadesrebudes" class="container">
+
+    <div ng-if="dadesrebudes" style="margin-left: 100px">
         <div class="row">
             <div class="col-sm-4">
-                <img src='{{userProfile.profile_image_url}}' style="border-radius: 50%"></img>
-                <span>{{userProfile.description}}</span>
-                <span>{{userProfile.followers_count}} Followers - {{userProfile.friends_count}} Following</span>
+                <div class="col-sm-12">
+                    <img src='{{userProfile.profile_image_url}}' style="border-radius: 50%; height: 400px"/>
+                </div>
+                <div class="col-sm-12">
+                    <h2 style="margin-bottom: 5px">{{userProfile.name}}</h2>
+                </div>
+                <div class="col-sm-12">
+                    <h3 style="margin-top: 0">@{{query.user}}</h3>
+                </div>
+                <div class="col-sm-12">
+                    <span>{{userProfile.description}}</span>
+                </div>
+                <div class="col-sm-12">
+                    <strong>{{userProfile.followers_count}} Followers - {{userProfile.friends_count}} Following</strong>
+                </div>
             </div>
             <div class="col-sm-4">
-                <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels"></canvas> 
+                <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" style="height: 450px; width: 220px "></canvas> 
             </div>
-            <div class="col-sm-4">
-                <div class="alert alert-dark">
-                    <p>Positive Score:</p>
-                    <p>{{userInfo.averageScore}}%</p>
-                </div>          
+            <div class="col-sm-4">      
                 <div class="alert alert-success">
                     <p>Best Tweet:</p>
                     <p>{{userInfo.bestTweet}}</p>
