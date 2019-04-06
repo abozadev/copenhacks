@@ -15,6 +15,14 @@ Positivism:
 - Follow link (if is positive) if don’t display an alert error
 
 
+
+
+
+
+
+
+
+
 TOPIC SEARCH 
 ______________________________________________________________________
 
@@ -27,6 +35,13 @@ Positivism:
 - Topic positivism average in %
 - Most positive tweet 
 - Follow link to hashtags (if is positive) if don’t display an alert error
+
+
+
+
+
+
+
 
 
 TOPIC SEARCH 
