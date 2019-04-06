@@ -69,11 +69,66 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
       if (listTweets.documents.length > 0){
         let body = '';
         let req = https.request (getRequestParams(endpoints.SENTIMENT), (res) => {
-          res.on ('data', function (d) {
+          res.on ('dahraseta', function (d) {
             body += d;
           });
           res.on ('end', function () {
             parseSentimentData(JSON.parse(body), twitterData, callback);
+          });
+        });
+        req.write(JSON.stringify(listTweets));
+        req.end();
+      } else {
+        callback.send("NOT ENOUGH TWEETS")
+      }
+    } else {
+      callback.send("NOT ENOUGH TWEETS")
+    }   
+
+  } else {
+    callback.send("ERROR");
+  }
+}
+
+let parsKeyPhrasesData = function(body, callback){
+  var idx = 0, sum = 0;
+  var keyPhrases = [];
+  body.documents.forEach(function(keyPhrase){
+    keyPhrases.concat(keyPhrase.keyPhrases);
+  });
+  callback.send(keyPhrases);
+}
+
+
+let getKeyPhrasesFromTwitterData = function(twitterData, callback){
+  if (twitterData != null && twitterData != undefined ){
+    if (twitterData.statuses !== null && twitterData.statuses !== undefined){
+      twitterData = twitterData.statuses;
+    }
+
+    if (twitterData.length > 0){
+      let listTweets = {'documents' : []};
+      var index = 0;
+  
+      twitterData.forEach(function(tweet){
+        if (tweet.retweeted_status == undefined){
+          listTweets.documents.push({
+            'id' : index,
+            'text': tweet.text,
+            'language' : tweet.lang
+          });
+        }
+        index++;
+      });
+  
+      if (listTweets.documents.length > 0){
+        let body = '';
+        let req = https.request (getRequestParams(endpoints.KEY_PHRASES), (res) => {
+          res.on ('data', function (d) {
+            body += d;
+          });
+          res.on ('end', function () {
+            parsKeyPhrasesData(JSON.parse(body), callback);
           });
         });
         req.write(JSON.stringify(listTweets));
