@@ -24,12 +24,12 @@ app.get('/XXXX', function(req, callback){
   callback.send('OK')
 });
 
-app.get('/search/:q', function(req, callback) {
+app.get('/search=:q', function(req, callback) {
 	var params = {q: req.params.q}
 		twitter.getSearch(params, callback);
 })
 
-app.get('/user/:username', function(req, callback) {
+app.get('/user=:username', function(req, callback) {
 	var params = {screen_name: req.params.username}
 		twitter.getUserTweets(params, callback);
 })
