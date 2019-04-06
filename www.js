@@ -33,3 +33,28 @@ app.get('/user/:username', function(req, callback) {
 	var params = {screen_name: req.params.username}
 		twitter.getUserTweets(params, callback);
 })
+
+const request = require('request');
+
+const credentials = process.env.TWITTER_CONSUMER_KEY  + ':' + process.env.TWITTER_CONSUMER_SECRET;
+const credentialsBase64Encoded = new Buffer(credentials).toString('base64');
+
+let TOKEN = null;
+
+request({
+    url: 'https://api.twitter.com/oauth2/token',
+    method:'POST',
+    headers: {
+      'Authorization': 'Basic ' + credentialsBase64Encoded,
+      'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
+    },
+    body: 'grant_type=client_credentials'
+}, function(err, resp, body) {
+    TOKEN = JSON.parse(body).access_token;
+    console.log(TOKEN)
+})
+
+app.get('/user/info/:username', function(req, callback) {
+	var params = {token: TOKEN, screen_name: req.params.username};
+	twitter.getUserInfo(params, callback);
+})
