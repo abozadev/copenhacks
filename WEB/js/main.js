@@ -25,17 +25,15 @@ app.controller('MainCtrl', function($scope, $location, Service) {
         $scope.dadesrebudes = true;
         $scope.averageNegative = 100 - $scope.userInfo.averageScore;
 
-
-        $scope.ctx = document.getElementById("myChart");;
-        $scope.myChart = new Chart($scope.ctx,{
-        type: 'doughnut',
-        data: [$scope.averageNegative, $scope.userInfo.averageScore],
-            labels: [
-                'Red',
-                'Green'
-            ]
+        $scope.labels = ["Positive", "Negative"];
+        $scope.data = [$scope.averageNegative, 100 - $scope.averageNegative];
     })
-        console.log(success.data);
+    Service.getUserProfile(query).then(function(success){
+        $scope.userProfile = success.data;
+
+
+        $scope.userProfile.profile_image_url = $scope.userProfile.profile_image_url.split('_normal')[0] + '.jpg';
+        console.log($scope.userProfile);
     })
   }
 });

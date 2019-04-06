@@ -1,57 +1,35 @@
 <!DOCTYPE html>
   <div class="App">
     <form> 
-        <input class="form" maxlength="20" type="text" value={user} ng-model="query.user" name="username" placeholder="@username"/>
-        <button ng-href='#!' ng-click=getData(query.user) type="submit">Go</button>
+        <input class="form" maxlength="20" type="text"  ng-model="query.user" name="username" placeholder="@username" autocomplete="off"/>
+        <button ng-href='' ng-click=getData(query.user) type="submit" class="btn-primary">Go</button>
     </form>
 
-    <div ng-if="dadesrebudes" class="datadisplay">
+    <div ng-if="dadesrebudes" class="container">
         <div class="row">
             <div class="col-sm-4">
-
+                <img src='{{userProfile.profile_image_url}}' style="border-radius: 50%"></img>
+                <span>{{userProfile.description}}</span>
+                <span>{{userProfile.followers_count}} Followers - {{userProfile.friends_count}} Following</span>
             </div>
-
-
-
-
-
-
-
             <div class="col-sm-4">
-                <canvas id="myChart)"></canvas>
-
-
-
-
-
-
+                <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels"></canvas> 
             </div>
-
-
-
-
-
-
-
-
             <div class="col-sm-4">
-                <blockquote>
+                <div class="alert alert-dark">
                     <p>Positive Score:</p>
                     <p>{{userInfo.averageScore}}%</p>
-                </blockquote>
-          
-                <blockquote>
+                </div>          
+                <div class="alert alert-success">
                     <p>Best Tweet:</p>
                     <p>{{userInfo.bestTweet}}</p>
-                </blockquote>
+                </div>
           
-                <blockquote>
+                <div class="alert alert-danger">
                     <p>Worst Tweet:</p>
                     <p>{{userInfo.worstTweet}}</p>
-                </blockquote>
+                </div>
             </div>
           </div>
-      
-      
     </div>
   </div>
