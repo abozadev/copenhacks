@@ -2633,4 +2633,6 @@ let TWITTER_DATA = {
   }
 };
 
-getSentimentsFromTwitterData(TWITTER_DATA);
+//getSentimentsFromTwitterData(TWITTER_DATA);
+
+module.exports.getSentimentsFromTwitterData = getSentimentsFromTwitterData;
