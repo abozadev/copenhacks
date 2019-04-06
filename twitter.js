@@ -1,5 +1,9 @@
 var Twitter = require('twitter');
 
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 var client = new Twitter({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -7,13 +11,12 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var getSearch = function(params) {
+var getSearch = function(callback, params)
+{
   client.get('search/tweets', params, function(error, tweets, response) {
-   console.log(tweets);
+   callback(tweets);
   });
 }
-
-var params = {screen_name: 'nodejs'};
 
 var getUserTweets = function(params)
 {
