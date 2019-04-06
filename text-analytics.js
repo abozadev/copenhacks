@@ -100,7 +100,7 @@ let parseSentimentData = function(body, listTweets, callback){
     worstTweet : listTweets.documents[parseInt(worstTweet.id)].text
   }
   //console.log(ret); 
-  callback.send({ averageSentiments : sum/idx });
+  callback.send(ret);
 }
 
 let getSentimentsFromTwitterData = function(twitterData, callback){
