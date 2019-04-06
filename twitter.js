@@ -1,7 +1,6 @@
 var Twitter = require('twitter');
-
 const dotenv = require('dotenv');
-
+var textAnalytics = require('./text-analytics')
 dotenv.config();
 
 var client = new Twitter({
@@ -11,18 +10,20 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var getSearch = function(callback, params)
+var getSearch = function(params, callback)
 {
   client.get('search/tweets', params, function(error, tweets, response) {
-   callback(tweets);
+    if (!error) {
+      textAnalytics.getSentimentsFromTwitterData(tweets, callback);
+    }
   });
 }
 
-var getUserTweets = function(params)
+var getUserTweets = function(params, callback)
 {
   client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
-      console.log(tweets);
+      textAnalytics.getSentimentsFromTwitterData(tweets, callback);
     }
   });
 }

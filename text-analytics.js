@@ -30,17 +30,17 @@ let parseSentimentData = function(body, listTweets, callback){
     idx++;
     if (sentiment.score > bestTweet.score){
       bestTweet.score = sentiment.score;
-      bestTweet.id = sentiment.id;
+      bestTweet.id = parseInt(sentiment.id);
     }
     if (sentiment.score < worstTweet.score){
       worstTweet.score = sentiment.score;
-      worstTweet.id = sentiment.id;
+      worstTweet.id = parseInt(sentiment.id);
     }
   });
   var ret = {
     averageScore : sum/idx,
-    bestTweet  : bestTweet.id  != -1 ? listTweets.documents[parseInt(bestTweet.id)].text : "",
-    worstTweet : worstTweet.id != -1 ? listTweets.documents[parseInt(worstTweet.id)].text : ""
+    bestTweet  : listTweets[bestTweet.id].text,
+    worstTweet : listTweets[worstTweet.id].text
   };
   callback.send(ret);
 }
@@ -50,10 +50,10 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
     if (twitterData.statuses !== null && twitterData.statuses !== undefined){
       twitterData = twitterData.statuses;
     }
-    
+
     let listTweets = {'documents' : []};
     var index = 0;
-    
+
     twitterData.forEach(function(tweet){
       if (tweet.retweeted_status == undefined){
         listTweets.documents.push({
@@ -64,7 +64,7 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
       }
       index++;
     });
-  
+
     if (listTweets.documents.length > 0){
       let body = '';
       let req = https.request (getRequestParams(endpoints.SENTIMENT), (res) => {
@@ -72,7 +72,7 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
           body += d;
         });
         res.on ('end', function () {
-          parseSentimentData(JSON.parse(body), listTweets, callback);
+          parseSentimentData(JSON.parse(body), twitterData, callback);
         });
       });
       req.write(JSON.stringify(listTweets));
@@ -84,7 +84,7 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
   } else {
     callback.send("ERROR");
   }
-  
+
 }
 
 module.exports.getSentimentsFromTwitterData = getSentimentsFromTwitterData;

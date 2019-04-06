@@ -18,6 +18,7 @@
   "homepage": "https://github.com/abozadev/copenhacks#readme",
   "dependencies": {
     "dotenv": "^7.0.0",
+    "express": "^4.16.4",
     "twitter": "^1.7.1"
   }
 }

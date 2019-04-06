@@ -4,6 +4,7 @@ require('dotenv').config();
 let express = require('express');
 let app = express();
 let path = require("path");
+var twitter = require("./twitter");
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 app.use(function(req, res, next) {
@@ -22,3 +23,13 @@ let server = app.listen(port, function () {
 app.get('/XXXX', function(req, callback){
   callback.send('OK')
 });
+
+app.get('/search/:q', function(req, callback) {
+	var params = {q: req.params.q}
+		twitter.getSearch(params, callback);
+})
+
+app.get('/user/:username', function(req, callback) {
+	var params = {screen_name: req.params.username}
+		twitter.getUserTweets(params, callback);
+})
