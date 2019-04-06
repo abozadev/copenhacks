@@ -65,17 +65,24 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
       index++;
     });
   
-    let body = '';
-    let req = https.request (getRequestParams(endpoints.SENTIMENT), (res) => {
-      res.on ('data', function (d) {
-        body += d;
+    if (listTweets.documents.length > 0){
+      let body = '';
+      let req = https.request (getRequestParams(endpoints.SENTIMENT), (res) => {
+        res.on ('data', function (d) {
+          body += d;
+        });
+        res.on ('end', function () {
+          parseSentimentData(JSON.parse(body), listTweets, callback);
+        });
       });
-      res.on ('end', function () {
-        parseSentimentData(JSON.parse(body), listTweets, callback);
-      });
-    });
-    req.write(JSON.stringify(listTweets));
-    req.end();
+      req.write(JSON.stringify(listTweets));
+      req.end();
+    } else {
+      callback.send("NOT ENOUGH TWEETS")
+    }
+
+  } else {
+    callback.send("ERROR");
   }
   
 }
