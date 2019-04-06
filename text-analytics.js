@@ -51,12 +51,16 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
   }
   
   let listTweets = {'documents' : []};
-  twitterData.forEach(function(tweet, index){
-    listTweets.documents.push({
-      'id' : index,
-      'text': tweet.text,
-      'language' : tweet.lang
-    });
+  var index = 0;
+  twitterData.forEach(function(tweet){
+    if (tweet.retweeted_status == undefined){
+      listTweets.documents.push({
+        'id' : index,
+        'text': tweet.text,
+        'language' : tweet.lang
+      });
+    }
+    index++;
   });
 
   let body = '';
