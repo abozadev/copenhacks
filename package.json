@@ -1,0 +1,19 @@
+{
+  "name": "copenhacks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abozadev/copenhacks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abozadev/copenhacks/issues"
+  },
+  "homepage": "https://github.com/abozadev/copenhacks#readme"
+}
