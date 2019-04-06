@@ -23,8 +23,21 @@ app.controller('MainCtrl', function($scope, $location, Service) {
         $scope.userInfo.averageScore =  $scope.userInfo.averageScore * 100;
         $scope.userInfo.averageScore = $scope.userInfo.averageScore.toFixed(2);
         $scope.dadesrebudes = true;
+        $scope.averageNegative = 100 - $scope.userInfo.averageScore;
+
+
+        $scope.ctx = document.getElementById("myChart");;
+        $scope.myChart = new Chart($scope.ctx,{
+        type: 'doughnut',
+        data: [$scope.averageNegative, $scope.userInfo.averageScore],
+            labels: [
+                'Red',
+                'Green'
+            ]
+    })
         console.log(success.data);
     })
   }
 });
+
 
