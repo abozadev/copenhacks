@@ -23,8 +23,8 @@ let getRequestParams = function(endpoint){
 
 let parseSentimentData = function(body, listTweets, callback){
   var idx = 0, sum = 0;
-  var bestTweet = { id : 0, score : 0 };
-  var worstTweet = { id : 0, score : 1.1 };
+  var bestTweet = { id : -1, score : 0 };
+  var worstTweet = { id : -1, score : 1.1 };
   body.documents.forEach(function(sentiment){
     sum += parseFloat(sentiment.score);
     idx++;
@@ -39,8 +39,8 @@ let parseSentimentData = function(body, listTweets, callback){
   });
   var ret = {
     averageScore : sum/idx,
-    bestTweet  : listTweets.documents[parseInt(bestTweet.id)].text,
-    worstTweet : listTweets.documents[parseInt(worstTweet.id)].text
+    bestTweet  : bestTweet.id  != -1 ? listTweets.documents[parseInt(bestTweet.id)].text : "",
+    worstTweet : worstTweet.id != -1 ? listTweets.documents[parseInt(worstTweet.id)].text : ""
   };
   callback.send(ret);
 }
