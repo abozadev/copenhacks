@@ -34,8 +34,6 @@ app.get('/user/:username', function(req, callback) {
 		twitter.getUserTweets(params, callback);
 })
 
-
-
 const request = require('request');
 
 const credentials = process.env.TWITTER_CONSUMER_KEY  + ':' + process.env.TWITTER_CONSUMER_SECRET;
@@ -54,4 +52,9 @@ request({
 }, function(err, resp, body) {
     TOKEN = JSON.parse(body).access_token;
     console.log(TOKEN)
+})
+
+app.get('/user/info/:username', function(req, callback) {
+	var params = {token: TOKEN, screen_name: req.params.username};
+	twitter.getUserInfo(params, callback);
 })
