@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-  <div>
-
-  <div class="container" style="margin-top:50px">
+  <div class="container" ng-if="landingpage" style="margin-top:50px">
     <div class="row">
       <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <h1 class="display-4">Welcome to Positweet!</h1>
+        <p class="lead">This is a powerfull metadata searcher that can calculate the positivism of Twitter tweets.</p>
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p>Try it now to calculate the level of positivism of any user!.</p>
         <p class="lead">
           <form style="width: 500px">
-            <div class="input-group">
+            <div class="input-group ">
                 <input type="text" class="form-control" ng-model="query.user" placeholder="Username">
                 <span class="input-group-btn">
-                    <button type="submit" class="btn btn-primary" ng-click="getData(query.user)" >Search</button>
+                    <button type="submit" class="btn btn-primary" ng-click="getData(query.user)" ><i class="material-icons">search</i></button>
                 </span>
             </div>
           </form>
@@ -22,10 +20,21 @@
     </div>
   </div>
 
+  <div class="App" ng-if="dadesrebudes">
+      <form style="width: 500px">
+          <div class="input-group ">
+              <input type="text" class="form-control" ng-model="query.user" placeholder="Username">
+              <span class="input-group-btn">
+                  <button type="submit" class="btn btn-primary" ng-click="getData(query.user)" >Search</button>
+              </span>
+          </div>
+        </form>
+  </div>
 
 
 
-    <div ng-if="dadesrebudes" style="margin-left: 100px">
+
+    <div ng-if="dadesrebudes" style="margin-left: 60px; padding-top: 70px">
       <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -36,7 +45,7 @@
                     <h2 style="margin-bottom: 5px">{{userProfile.name}}</h2>
                 </div>
                 <div class="col-sm-12">
-                    <h3 style="margin-top: 0">@{{query.user}}</h3>
+                    <h3 style="margin-top: 0">@{{userProfile.screen_name}}</h3>
                 </div>
                 <div class="col-sm-12">
                     <span>{{userProfile.description}}</span>
@@ -45,21 +54,22 @@
                     <strong>{{userProfile.followers_count}} Followers - {{userProfile.friends_count}} Following</strong>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" style="height: 450px; width: 220px "></canvas>
+            <div class="col-lg-4 chart" >
+              <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" style="height: 200px; width: 200px; background-color: transparent"></canvas>
+              <h3 class="percent" style="margin-top: 0">{{userInfo.averageScore}}%</h3>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-4" style="padding-top: 50px">
                 <div class="alert alert-success">
-                    <p>Best Tweet:</p>
+                    <strong>Best Tweet 😊:</strong>
                     <p>{{userInfo.bestTweet}}</p>
                 </div>
 
                 <div class="alert alert-danger">
-                    <p>Worst Tweet:</p>
+                    <strong>Worst Tweet 😔:</strong>
                     <p>{{userInfo.worstTweet}}</p>
                 </div>
             </div>
           </div>
         </div>
     </div>
-  </div>
+

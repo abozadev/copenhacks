@@ -16,22 +16,27 @@ app.controller('MainCtrl', function($scope, $location, Service) {
   }
 
   $scope.dadesrebudes = false;
+  $scope.landingpage = true;
 
   $scope.getData = function(query){
     Service.getUserInfo(query).then(function(success){
         $scope.userInfo = success.data;
         $scope.userInfo.averageScore =  $scope.userInfo.averageScore * 100;
         $scope.userInfo.averageScore = $scope.userInfo.averageScore.toFixed(2);
-        $scope.dadesrebudes = true;
         $scope.averageNegative = 100 - $scope.userInfo.averageScore;
+        $scope.dadesrebudes = true;
+        $scope.landingpage = false;
+
 
         $scope.labels = ["Negative", "Positive"];
         $scope.data = [$scope.averageNegative, 100 - $scope.averageNegative];
     })
     Service.getUserProfile(query).then(function(success){
         $scope.userProfile = success.data;
+        console.log($scope.userProfile);
         $scope.userProfile.profile_image_url = $scope.userProfile.profile_image_url.split('_normal')[0] + '.jpg';
-        $scope.colors = ["#FF4A52", "#92FF91" ];
+        $scope.colors = ["#FF4A52", "#6BD98D"];
+        
     })
   }
 });

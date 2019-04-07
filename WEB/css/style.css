@@ -11,24 +11,40 @@
   color: #333333;
 }
 
+body{
+  background: #F8F8F8;
+}
+
+.jumbotron{
+  background: #EDECEB;
+}
 
 p{
   color: #212529!important;
+  font-family: Roboto;
+}
+input:focus{
+  outline: 0 none !important;
 }
 
-
+.input-group{
+  outline: 0 none !important;
+  font-family: Roboto;
+}
 
 blockquote{
   width: 500px;
   background: white;
   align-items: center;
   position: relative;
+  font-family: Roboto;
 }
 
 .datadisplay{
   text-align: -webkit-center;
   margin-top: 20px;
   border-radius: 50px;
+  font-family: Roboto;
 }
 
 .form-control-borderless {
@@ -39,4 +55,49 @@ blockquote{
   border: none;
   outline: none;
   box-shadow: none;
+}
+
+
+.navbar-default {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+h1, a{
+  font-family: Roboto !important;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #FFA35F !important;
+  border: none;
+  height: 34px;
+  
+}
+i{
+  box-sizing: border-box;
+}
+.btn{
+  border-color: none !important;
+}
+
+.form-control{
+  border: none !important;
+}
+
+.text-muted{
+  position: fixed !important; 
+  bottom: 0px;
+  right: 10px;
+}
+
+.chart{
+  margin-top: 0px;
+}
+
+.percent{
+  text-align: center;
+  align-items: center;
+  padding-top: -90px;
+
 }
