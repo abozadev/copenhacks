@@ -38,6 +38,7 @@
       <div class="container infoshow">
         <div class="row">
             <div class="col-lg-4 nova">
+                    <br/><br/><br/>
                 <div class="col-sm-12 infoshow">
                     <img src='{{userProfile.profile_image_url}}' style="border-radius: 50%; height: 250px"/>
                 </div>
@@ -61,8 +62,8 @@
 
 
             <div class="col-lg-4 chart" >
-              <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" style="height: auto; width:30em"></canvas>
-              <h3 class="percent">{{userInfo.averageScore}}%</h3>
+              <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" height="300px" ></canvas>
+              <h3 class="percent" style="padding-right: 50px">{{userInfo.averageScore}}%</h3>
             </div>
 
 
@@ -71,6 +72,7 @@
 
 
             <div class="col-lg-4" style="padding-top: 50px; padding-bottom: 50px">
+                <br/><br/><br/><br/><br/>
                 <div class="alert alert-success">
                     <strong>Best Tweet 😊:</strong>
                     <p>{{userInfo.bestTweet}}</p>
