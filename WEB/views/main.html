@@ -82,7 +82,21 @@
                     <strong>Worst Tweet 😔:</strong>
                     <p>{{userInfo.worstTweet}}</p>
                 </div>
+
             </div>
+          </div></br></br></br></br>
+          <div class="row">
+                <div class="col-xs-12" >
+                    <div ng-if="userInfo.averageScore > 50">
+                            <h4>This user is safe to follow. Our analysis reports a good positivism in his/her tweets. </h4></br>
+                        <a href="https://twitter.com/intent/follow?screen_name={{userProfile.screen_name}}" class="btn" style="background-color: #1b95e0; color: white;" > <i class="fa fa-twitter"></i>&nbsp;Follow @{{userProfile.screen_name}}</a>
+                    </div>
+                    <div ng-if="userInfo.averageScore <= 50">
+                        <h4>This user may not be positive in his tweets. </br>Non-positive people can affect your personality. Follow it on your risk.</h4></br>
+                        <br>
+                        <a href="https://twitter.com/intent/follow?screen_name={{userProfile.screen_name}}" class="btn" style="background-color: red; color: white" > <i class="fa fa-twitter"></i>&nbsp;Follow @{{userProfile.screen_name}}</a>
+                    </div>
+                </div>
           </div>
         </div>
     </div>
