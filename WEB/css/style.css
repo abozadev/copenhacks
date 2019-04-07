@@ -47,15 +47,6 @@ blockquote{
   font-family: Roboto;
 }
 
-.form-control-borderless {
-  border: none;
-}
-
-.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
-  border: none;
-  outline: none;
-  box-shadow: none;
-}
 
 
 .navbar-default {
@@ -63,7 +54,7 @@ blockquote{
   border: none !important;
 }
 
-h1, a{
+h1, a, strong, h3, h2, h4{
   font-family: Roboto !important;
 }
 
@@ -92,12 +83,44 @@ i{
 }
 
 .chart{
-  margin-top: 0px;
+  padding-top: 50px !important;
 }
 
 .percent{
   text-align: center;
   align-items: center;
-  padding-top: -90px;
+}
 
+
+.infoshow{
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-content: center;
+
+}
+
+.row{
+  display: block;
+  align-content: center;
+}
+
+.container{
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-content: center !important;
+}
+.chartjs-size-monitor{
+  display: block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-content: center !important;
+}
+
+.nova{
+  display: inline-block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  align-content: center !important;
 }

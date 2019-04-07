@@ -24,6 +24,7 @@ app.controller('MainCtrl', function($scope, $location, Service) {
         $scope.userInfo.averageScore =  $scope.userInfo.averageScore * 100;
         $scope.userInfo.averageScore = $scope.userInfo.averageScore.toFixed(2);
         $scope.averageNegative = 100 - $scope.userInfo.averageScore;
+        $scope.averageNegative = $scope.averageNegative.toFixed(2);
         $scope.dadesrebudes = true;
         $scope.landingpage = false;
 

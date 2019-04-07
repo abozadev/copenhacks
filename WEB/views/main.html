@@ -25,7 +25,7 @@
           <div class="input-group ">
               <input type="text" class="form-control" ng-model="query.user" placeholder="Username">
               <span class="input-group-btn">
-                  <button type="submit" class="btn btn-primary" ng-click="getData(query.user)" >Search</button>
+                  <button type="submit" class="btn btn-primary" ng-click="getData(query.user)" ><i class="material-icons">search</i></button>
               </span>
           </div>
         </form>
@@ -34,31 +34,43 @@
 
 
 
-    <div ng-if="dadesrebudes" style="margin-left: 60px; padding-top: 70px">
-      <div class="container">
+    <div ng-if="dadesrebudes" style="padding-top: 70px">
+      <div class="container infoshow">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="col-sm-12">
+            <div class="col-lg-4 nova">
+                <div class="col-sm-12 infoshow">
                     <img src='{{userProfile.profile_image_url}}' style="border-radius: 50%; height: 250px"/>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 infoshow">
                     <h2 style="margin-bottom: 5px">{{userProfile.name}}</h2>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 infoshow">
                     <h3 style="margin-top: 0">@{{userProfile.screen_name}}</h3>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 infoshow">
                     <span>{{userProfile.description}}</span>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 infoshow">
                     <strong>{{userProfile.followers_count}} Followers - {{userProfile.friends_count}} Following</strong>
                 </div>
             </div>
+
+
+
+
+
+
             <div class="col-lg-4 chart" >
-              <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" style="height: 200px; width: 200px; background-color: transparent"></canvas>
-              <h3 class="percent" style="margin-top: 0">{{userInfo.averageScore}}%</h3>
+              <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" style="height: auto; width:30em"></canvas>
+              <h3 class="percent">{{userInfo.averageScore}}%</h3>
             </div>
-            <div class="col-lg-4" style="padding-top: 50px">
+
+
+
+
+
+
+            <div class="col-lg-4" style="padding-top: 50px; padding-bottom: 50px">
                 <div class="alert alert-success">
                     <strong>Best Tweet 😊:</strong>
                     <p>{{userInfo.bestTweet}}</p>
