@@ -37,6 +37,15 @@ app.controller('MainCtrl', function($scope, $location, Service) {
         $scope.userProfile.profile_image_url = $scope.userProfile.profile_image_url.split('_normal')[0] + "." + $scope.userProfile.profile_image_url.split('.')[ $scope.userProfile.profile_image_url.split('.').length - 1];
         $scope.colors = ["#FF4A52", "#6BD98D"];
         
+    });
+    Service.getUserProfileTopic(query).then(function(success){
+        $scope.topics = success.data;
+        if ($scope.topics.length > 0){
+            $scope.usedTopics = "#" + success.data[0];
+            for (var i = 1; i < 10; i++){
+                $scope.usedTopics += ", #" + success.data[i];
+            }
+        }
     })
   }
 });

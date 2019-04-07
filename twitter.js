@@ -29,9 +29,17 @@ var getUserTweets = function(params, callback)
   });
 }
 
+var getUserTweetsTopics = function(params, callback)
+{
+  client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    if (!error) {
+      textAnalytics.getKeyPhrasesFromTwitterData(tweets, callback);
+    }
+  });
+}
+
 var getUserInfo = function(params, callback)
 {
-  console.log(params.token);
   var clientUser = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -49,3 +57,4 @@ var getUserInfo = function(params, callback)
 module.exports.getSearch = getSearch;
 module.exports.getUserTweets = getUserTweets;
 module.exports.getUserInfo = getUserInfo;
+module.exports.getUserTweetsTopics = getUserTweetsTopics;

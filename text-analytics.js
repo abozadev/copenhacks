@@ -91,10 +91,9 @@ let getSentimentsFromTwitterData = function(twitterData, callback){
 }
 
 let parsKeyPhrasesData = function(body, callback){
-  var idx = 0, sum = 0;
   var keyPhrases = [];
-  body.documents.forEach(function(keyPhrase){
-    keyPhrases.concat(keyPhrase.keyPhrases);
+  body.documents.forEach(function(res){
+    keyPhrases = keyPhrases.concat(res.keyPhrases);
   });
   callback.send(keyPhrases);
 }
@@ -105,19 +104,15 @@ let getKeyPhrasesFromTwitterData = function(twitterData, callback){
     if (twitterData.statuses !== null && twitterData.statuses !== undefined){
       twitterData = twitterData.statuses;
     }
-
     if (twitterData.length > 0){
       let listTweets = {'documents' : []};
       var index = 0;
-  
       twitterData.forEach(function(tweet){
-        if (tweet.retweeted_status == undefined){
-          listTweets.documents.push({
-            'id' : index,
-            'text': tweet.text,
-            'language' : tweet.lang
-          });
-        }
+        listTweets.documents.push({
+          'id' : index,
+          'text': tweet.text,
+          'language' : tweet.lang
+        });
         index++;
       });
   

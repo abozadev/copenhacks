@@ -71,7 +71,7 @@
 
 
 
-            <div class="col-lg-4" style="padding-top: 50px; padding-bottom: 50px">
+            <div class="col-lg-4" >
                 <br/><br/><br/><br/><br/>
                 <div class="alert alert-success">
                     <strong>Best Tweet 😊:</strong>
@@ -83,8 +83,13 @@
                     <p>{{userInfo.worstTweet}}</p>
                 </div>
 
+                <div class="alert alert-info">
+                    <strong>Topics 😯 :</strong>
+                    <p>{{usedTopics}}</p>
+                </div>
+
             </div>
-          </div></br></br></br></br>
+          </div></br></br>
           <div class="row">
                 <div class="col-xs-12" >
                     <div ng-if="userInfo.averageScore > 50">

@@ -9,6 +9,9 @@ app.factory('Service', function ($http) {
         },
         getUserProfile: function(query){
             return $http.get(url + '/user/info/'+ query);
+        },
+        getUserProfileTopic: function(query){
+            return $http.get(url + '/topics/'+ query);
         }
     }
 });
