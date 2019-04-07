@@ -51,10 +51,7 @@
             <a class="navbar-brand" href="#">TWEETANALYZER!</a>
         </div>
         <ul class="nav navbar-nav" >
-            <li ng-class="getActive() == 'HOME' ? 'active' : ''">
-                <a href="#">Home</a>
-            </li>
-            <!--<li ng-class="getActive() == '1' ? 'active' : ''">
+              <!--<li ng-class="getActive() == '1' ? 'active' : ''">
                 <a href="" ng-click="goTo('/1')">1</a>
             </li>
             <li ng-class="getActive() == '2' ? 'active' : ''">
@@ -64,11 +61,19 @@
     </div>
 </nav>
 <div ng-view></div>
-<div id="footer">
+
+<footer class="text-muted">
+      <div class="container float-center">
+        <p class="text-muted credit" >TweeterAnalyzer with ❤️ at Copenhacks!</p>
+      </div>
+    </footer>
+
+<!--<footer id="footer">
     <div class="container text-center">
         <p class="text-muted credit" >TweeterAnalyzer with ❤️ at Copenhacks!</p>
     </div>
-</div>
+</footer>-->
+
 </body>
 
 </html>

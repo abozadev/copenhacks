@@ -13,7 +13,7 @@
 
 
 p{
-  color: #212529!important; 
+  color: #212529!important;
 }
 
 
@@ -30,13 +30,6 @@ blockquote{
   margin-top: 20px;
   border-radius: 50px;
 }
-
-.text-muted, .credit{
-  bottom: 0px;
-  position: absolute;
-  right: 15px
-}
-
 
 .form-control-borderless {
   border: none;

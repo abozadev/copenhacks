@@ -25,7 +25,7 @@ app.controller('MainCtrl', function($scope, $location, Service) {
         $scope.dadesrebudes = true;
         $scope.averageNegative = 100 - $scope.userInfo.averageScore;
 
-        $scope.labels = ["Positive", "Negative"];
+        $scope.labels = ["Negative", "Positive"];
         $scope.data = [$scope.averageNegative, 100 - $scope.averageNegative];
     })
     Service.getUserProfile(query).then(function(success){
@@ -35,5 +35,3 @@ app.controller('MainCtrl', function($scope, $location, Service) {
     })
   }
 });
-
-

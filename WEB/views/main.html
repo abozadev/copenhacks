@@ -1,25 +1,36 @@
 <!DOCTYPE html>
   <div>
-    <form >
-        <div class="row">
-            <div class="col-xs-4"></div>
-            <div class="col-xs-4">
-                <div class="input-group">
-                    <input type="text" class="form-control" ng-model="query.user" placeholder="Username">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary" ng-click="getData(query.user)" >Search</button>
-                    </span>
-                </div>
+
+  <div class="container" style="margin-top:50px">
+    <div class="row">
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+          <form style="width: 500px">
+            <div class="input-group">
+                <input type="text" class="form-control" ng-model="query.user" placeholder="Username">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" ng-click="getData(query.user)" >Search</button>
+                </span>
             </div>
-        </div>
-    </form>
+          </form>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
 
 
     <div ng-if="dadesrebudes" style="margin-left: 100px">
+      <div class="container">
         <div class="row">
-            <div class="col-sm-4">
+            <div class="col-lg-4">
                 <div class="col-sm-12">
-                    <img src='{{userProfile.profile_image_url}}' style="border-radius: 50%; height: 400px"/>
+                    <img src='{{userProfile.profile_image_url}}' style="border-radius: 50%; height: 250px"/>
                 </div>
                 <div class="col-sm-12">
                     <h2 style="margin-bottom: 5px">{{userProfile.name}}</h2>
@@ -34,20 +45,21 @@
                     <strong>{{userProfile.followers_count}} Followers - {{userProfile.friends_count}} Following</strong>
                 </div>
             </div>
-            <div class="col-sm-4">
-                <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" style="height: 450px; width: 220px "></canvas> 
+            <div class="col-lg-4">
+                <canvas id="donutChart" class="chart chart-doughnut" chart-data="data" chart-labels="labels" chart-colors="colors" style="height: 450px; width: 220px "></canvas>
             </div>
-            <div class="col-sm-4">      
+            <div class="col-lg-4">
                 <div class="alert alert-success">
                     <p>Best Tweet:</p>
                     <p>{{userInfo.bestTweet}}</p>
                 </div>
-          
+
                 <div class="alert alert-danger">
                     <p>Worst Tweet:</p>
                     <p>{{userInfo.worstTweet}}</p>
                 </div>
             </div>
           </div>
+        </div>
     </div>
   </div>
